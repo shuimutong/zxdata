@@ -39,9 +39,8 @@ public class DbConnection {
 	 */
 	private void loadDbProperties() {
 		Properties dbProperties = new Properties();
-//		InputStream is = DbConnection.class.getResourceAsStream("E:/workspace1112/ourpass/src/main/resources/"+"database.properties");
 		try {
-			InputStream is = new FileInputStream("E:/workspace1112/ourpass/src/main/resources/"+"database.properties");
+			InputStream is = new FileInputStream(String.valueOf(DbConnection.class.getResource("/")).replace("file:/", "") + "database.properties");
 			dbProperties.load(is);
 			dbDriverName = dbProperties.getProperty("driver");
 			dbConnUrl = dbProperties.getProperty("url");
