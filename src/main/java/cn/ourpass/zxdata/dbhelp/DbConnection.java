@@ -2,7 +2,6 @@ package cn.ourpass.zxdata.dbhelp;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,8 +39,12 @@ public class DbConnection {
 	private void loadDbProperties() {
 		Properties dbProperties = new Properties();
 		try {
-			InputStream is = new FileInputStream(String.valueOf(DbConnection.class.getResource("/")).replace("file:/", "") + "database.properties");
-			dbProperties.load(is);
+			String confFilePath = String.valueOf(DbConnection.class.getResource("/")).replace("file:/", "") + "database.properties";
+			if (System.getProperties().getProperty("os.name").toUpperCase().indexOf("WINDOWS") == -1) {
+				confFilePath = "/" + confFilePath;
+			}
+			log.info("----------confFilePath----------------" + confFilePath);
+			dbProperties.load(new FileInputStream(confFilePath));
 			dbDriverName = dbProperties.getProperty("driver");
 			dbConnUrl = dbProperties.getProperty("url");
 			dbUsername = dbProperties.getProperty("username");
