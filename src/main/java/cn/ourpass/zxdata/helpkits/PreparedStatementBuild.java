@@ -27,6 +27,8 @@ public class PreparedStatementBuild {
 				} else if (tv.getClazz().toString().toLowerCase()
 						.contains("boolean")) {
 					ps.setBoolean(i + 1, (Boolean) tv.getValue());
+				} else if(tv.getClazz().toString().toLowerCase().contains("date")) {
+					ps.setDate(i + 1, new java.sql.Date(((java.util.Date) tv.getValue()).getTime()));
 				}
 			} catch (SQLException e) {
 				log.error(e);

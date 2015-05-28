@@ -185,4 +185,8 @@ public class BaseDao<E extends Serializable, PK extends Serializable> {
 		}
 		return e;
 	}
+	
+	protected DbService getDbService() {
+		return dbService;
+	}
 }
