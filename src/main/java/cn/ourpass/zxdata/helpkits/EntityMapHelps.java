@@ -130,11 +130,16 @@ public class EntityMapHelps {
 				E ee = (E) clazz.newInstance();
 				for(EntityAttr ea : (List<EntityAttr>)em.getAttributesList()) { //循环填充对象属性
 					Method me = clazz.getMethod(StringUtilsOfMe.formatAttributeNameToSetMethodName(ea.getName()), ea.getType());
+					System.out.println("----eaType:"+ea.getType());
 					if(ClassHelps.isString(ea.getType())) {
 						me.invoke(ee, rs.getString(ea.getColumnName()));
 					} else if(ClassHelps.isInteger(ea.getType())) {
 						me.invoke(ee, rs.getInt(ea.getColumnName()));
-					}
+					} else if(ClassHelps.isBoolean(ea.getType())) {
+						me.invoke(ee, rs.getBoolean(ea.getColumnName()));
+					} else if(ClassHelps.isDate(ea.getType())) {
+						me.invoke(ee, rs.getDate(ea.getColumnName()));
+					} 
 				}
 				resultList.add(ee);
 			}

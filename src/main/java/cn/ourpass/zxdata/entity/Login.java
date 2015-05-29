@@ -72,4 +72,11 @@ public class Login implements BaseEntity {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
+	@Override
+	public String toString() {
+		return "Login [id=" + id + ", email=" + email + ", password="
+				+ password + ", createTime=" + createTime + ", updateTime="
+				+ updateTime + "]";
+	}
+	
 }

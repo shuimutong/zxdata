@@ -34,4 +34,13 @@ public class ClassHelps {
 	public static boolean isBoolean(Class clazz) {
 		return clazz.toString().toLowerCase().contains("boolean");
 	}
+
+	/**
+	 * EntityAttr的type是否是Date类型
+	 * @param ea
+	 * @return
+	 */
+	public static boolean isDate(Class clazz) {
+		return clazz.toString().toLowerCase().contains("date");
+	}
 }
