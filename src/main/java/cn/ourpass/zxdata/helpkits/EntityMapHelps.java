@@ -125,7 +125,6 @@ public class EntityMapHelps {
 		List<E> resultList = new LinkedList<E>();
 		try {
 			Class clazz = Class.forName(em.getClassName());
-			int i = 0;
 			while(rs != null && rs.next()) { //滚动结果集
 				E ee = (E) clazz.newInstance();
 				for(EntityAttr ea : (List<EntityAttr>)em.getAttributesList()) { //循环填充对象属性
