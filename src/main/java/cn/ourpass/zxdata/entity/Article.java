@@ -29,6 +29,8 @@ public class Article implements BaseEntity {
 	private String title;
 	//文章内容
 	private String content;
+	//是否隐藏(0 显示 1 隐藏)
+	private int hidden;
 	
 	@XId(isAutoIncrease=true)
 	@XColumn(name="id")
@@ -54,10 +56,19 @@ public class Article implements BaseEntity {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	@XColumn(name="hidden")
+	public int getHidden() {
+		return hidden;
+	}
+	public void setHidden(int hidden) {
+		this.hidden = hidden;
+	}
+	
 	@Override
 	public String toString() {
 		return "Article [id=" + id + ", title=" + title + ", content="
-				+ content + "]";
+				+ content + ", hidden=" + hidden + "]";
 	}
 	
 }
